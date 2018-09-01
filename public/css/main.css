@@ -28,3 +28,18 @@
 .card-header {
     font-size: 18px;
 }
+.alert.box {
+    margin: 0 auto 10px;
+    width: 50%;
+    display: none;
+}
+.alert.notification {
+    z-index: 9999;
+    position: absolute;
+    top: 55px;
+    right: 55px;
+    display: none;
+}
+.td-id {
+    display: none;
+}

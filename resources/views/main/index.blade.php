@@ -8,9 +8,10 @@
     <div class="card text-center">
         <div class="card-header font-weight-bold">Кошелек пользователя</div>
         <div class="card-body">
-            <table class="table table-bordered">
+            <table class="table table-bordered" id="user-money">
                 <thead class="thead-dark-custom">
                 <tr>
+                    <th class="td-id"></th>
                     <th scope="col">Номинал (руб.)</th>
                     <th scope="col">Кол-во</th>
                     <th scope="col">Внести 1 ед. номинала</th>
@@ -18,11 +19,12 @@
                 </thead>
                 <tbody>
                 @foreach($user as $item)
-                    <tr>
-                        <td>{{ $item->value }}</td>
-                        <td>{{ $item->count }}</td>
+                    <tr class="user-money-rows" user-id-money="{{ $item->id }}">
+                        <td class="td-id">{{ $item->id }}</td>
+                        <td class="nominal-value">{{ $item->value }}</td>
+                        <td class="count">{{ $item->count }}</td>
                         <td>
-                            <button type="button" class="btn btn-primary">Внести</button>
+                            <button type="button" class="btn btn-primary btn-enter-money">Внести</button>
                         </td>
                     </tr>
                 @endforeach
@@ -38,20 +40,22 @@
             <table class="table table-bordered">
                 <thead class="thead-dark-custom">
                 <tr>
+                    <th class="td-id"></th>
                     <th scope="col">Наименование товара</th>
                     <th scope="col">Цена</th>
                     <th scope="col">Кол-во товара</th>
-                    <th scope="col">Выбрать товар</th>
+                    <th scope="col">Купить товар</th>
                 </tr>
                 </thead>
                 <tbody>
                 @foreach($products as $product)
-                    <tr>
+                    <tr class="product-rows">
+                        <td class="td-id">{{ $product->id }}</td>
                         <td>{{ $product->name }}</td>
                         <td>{{ $product->price }}</td>
-                        <td>{{ $product->count }}</td>
+                        <td class="count">{{ $product->count }}</td>
                         <td>
-                            <button type="button" class="btn btn-primary">Выбрать</button>
+                            <button type="button" class="btn btn-primary btn-buy">Купить</button>
                         </td>
                     </tr>
                 @endforeach
@@ -59,25 +63,28 @@
             </table>
         </div>
 
+        <div class="alert box alert-success" role="alert">
+            Спасибо!
+        </div>
+        <div class="alert box alert-danger" role="alert">
+            Недостаточно средств
+        </div>
+
         <div class="card-body" style="padding-top: 0;">
             <table class="table table-bordered display-table">
                 <thead>
                 <tr>
-                    <th colspan="3" class="bg-success">Дисплей </th>
+                    <th colspan="2" class="bg-success">Дисплей </th>
                 </tr>
                 <tr>
                     <th scope="col">Внесенная сумма</th>
                     <th scope="col">Получить сдачу</th>
-                    <th scope="col">Купить товар</th>
                 </tr>
                 </thead>
                 <tbody>
-                 <td><input id="pay-sum" readonly value="0"></td>
+                 <td><input id="pay-sum" readonly value="{{ $display->pay_sum }}"></td>
                  <td>
-                     <button type="button" class="btn btn-primary">Сдача</button>
-                 </td>
-                 <td>
-                     <button type="button" class="btn btn-primary">Купить</button>
+                     <button id="money-back" type="button" class="btn btn-primary">Сдача</button>
                  </td>
                 </tbody>
             </table>
@@ -96,17 +103,13 @@
                 </thead>
                 <tbody>
                 @foreach($vm as $vmItem)
-                    <tr>
+                    <tr class="vm-money-rows" vm-id-money="{{ $vmItem->id }}">
                         <td>{{ $vmItem->value }}</td>
-                        <td>{{ $vmItem->count }}</td>
+                        <td class="count">{{ $vmItem->count }}</td>
                     </tr>
                 @endforeach
                 </tbody>
             </table>
         </div>
     </div>
-@endsection
-
-@section('scripts')
-    <script src="{{ asset('js/homepage.js') }}"></script>
 @endsection

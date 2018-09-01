@@ -27,6 +27,9 @@
         <a class="navbar-brand" href="/">Главная</a>
     </nav>
 
+    <div class="alert notification alert-success" role="alert"></div>
+    <div class="alert notification alert-danger" role="alert"></div>
+
     <div class="container">
         @yield('content')
     </div>
@@ -45,6 +48,7 @@
         integrity="sha384-pjaaA8dDz/5BgdFUPX6M/9SUZv4d12SUPF0axWc+VRZkx5xU3daN+lYb49+Ax+Tl"
         crossorigin="anonymous"></script>
 <script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ asset('js/function.js') }}"></script>
 <script src="{{ asset('js/main.js') }}"></script>
 
 <div class="container">
