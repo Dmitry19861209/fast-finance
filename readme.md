@@ -46,3 +46,23 @@ http://127.0.0.1:8000
 ```sh
 php artisan migrate --seed
 ```
+
+## Структура
+
+Структура задействованных в задании каталогов и файлов(вкратце)
+
+Каталог | Файл | Комментарий
+:--- | :---: | :---:
+routes | web.php | Маршруты/роуты.
+Http/Controllers | IndexController.php | Контроллер главной страницы
+Models | Display.php | Модель для дисплея
+Models | Money.php | Модель для кошельков vm и user
+Models | Owners.php | Модель для владельцев
+Models | Products.php | Модель для товара
+Helpers | ModelTrait.php | Хелпер для моделей
+database/migrations | * | Миграции
+database/seeds | * | Сидеры
+public/css | * | стили
+public/js | * | скрипты
+resources/views | * | blade шаблоны
+

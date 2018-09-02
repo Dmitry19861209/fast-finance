@@ -45,6 +45,13 @@ class Money extends Model
         }
     }
 
+    /**
+     * Разменять деньги
+     *
+     * @param $monies
+     * @param $cash
+     * @return mixed
+     */
     private static function cashProcessing($monies, $cash)
     {
         foreach ($monies as $key => $money) {
